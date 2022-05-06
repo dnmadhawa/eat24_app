@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Eat24</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="dashboard">Dashboard</string>
+    <string name="orders">Orders</string>
+    <string name="kitchen">Kitchen</string>
+    <string name="delivery">Delivery</string>
+    <string name="delivery_orders">Delivery Orders</string>
+    <string name="add_food">Add Food</string>
+    <string name="billing">Billing</string>
+    <string name="bill_details">Bill details</string>
+    <string name="logout">LogOut</string>
+    <string name="todo">TODO</string>
+</resources>
