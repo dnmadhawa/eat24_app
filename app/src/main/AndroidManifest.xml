@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eat24">
         <activity
+            android:name=".DeliveryComplete"
+            android:exported="false" />
+        <activity
+            android:name=".EditOrder"
+            android:exported="false" />
+        <activity
+            android:name=".NewDelivery"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
