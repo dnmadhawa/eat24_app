@@ -61,4 +61,8 @@ public class Fragment_Orders2 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment__orders2, container, false);
     }
+
+    //orders delete
+
+
 }

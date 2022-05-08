@@ -60,5 +60,9 @@ public class fragmentOrder extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_order, container, false);
+
+
+        //delete orders
+
     }
 }
