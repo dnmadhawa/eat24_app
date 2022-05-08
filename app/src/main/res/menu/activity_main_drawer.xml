@@ -5,7 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/dashboard"
             android:icon="@drawable/burger"
             android:title="@string/dashboard" />
         <item
@@ -21,9 +21,9 @@
             android:icon="@drawable/delivery_icon"
             android:title="@string/delivery" />
         <item
-            android:id="@+id/delivery_orders"
+            android:id="@+id/delivery_list"
             android:icon="@drawable/delivery_icon"
-            android:title="@string/delivery_orders" />
+            android:title="@string/delivery_list" />
         <item
             android:id="@+id/add_food"
             android:icon="@drawable/add_food_icon"
