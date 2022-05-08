@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.company.eat24">
 
     <application
@@ -9,6 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eat24">
+
+
+        <activity
+            android:name=".AddFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".foodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FoodAdapter"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".FoodModel"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
