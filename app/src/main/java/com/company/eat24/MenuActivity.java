@@ -23,34 +23,6 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        private void loadCategoryFromFireBase(){
-            List<CategoryModel> categoryModelList =new ArrayList<>();
-            FirebaseDatabase.getInstance()
-                    .getReference("Category")
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            Object categoryLoadListner = null;
-                            if(dataSnapshot.exists()){
-                                for(dataSnapshot:dataSnapshot:
-                                dataSnapshot.getChildren()) {
-                                    HttpCookie categorySnapshot = null;
-                                    String categoryModel = categorySnapshot.getValue(CategoryModel);
-                                    categoryModel.add(categoryModel);
 
-                                }categoryLoadListner.onCategoryLoadSuccess(categoryModelList);
-
-                            }
-                            else{
-                                categoryLoadListner.onCategoryLoadFail("can not find items");
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
         }
     }
-}
