@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case  R.id.delivery:
                 replaceFragment(new DeliveryFragment());
                 break;
+
+            case  R.id.add_food:
+                replaceFragment(new addFoodFragment());
+                break;
             case  R.id.delivery_list:
                 replaceFragment(new DeliveryListFragment());
                 break;
