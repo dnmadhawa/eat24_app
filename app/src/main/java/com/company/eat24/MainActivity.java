@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(savedInstanceState == null) {
             replaceFragment(new DashboardFragment());
         }
+
+
     }
 
     @Override
