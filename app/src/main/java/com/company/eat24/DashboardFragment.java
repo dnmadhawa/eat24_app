@@ -2,17 +2,11 @@ package com.company.eat24;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,33 +61,4 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dashboard, container, false);
     }
-//
-//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//
-//        int id = menuItem.getItemId();
-//        switch (id){
-//            case R.id.dashboard:
-//                replaceFragment(new DashboardFragment());
-//                break;
-//            case  R.id.delivery:
-//                replaceFragment(new DeliveryFragment());
-//                break;
-//            case  R.id.delivery_list:
-//                replaceFragment(new DeliveryListFragment());
-//                break;
-//            case R.id.nav_gallery:
-//                break;
-//
-//        }
-//
-//
-//        return true;
-//    }
-
-//    private void replaceFragment(Fragment fragment){
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.frameLayout,fragment);
-//        fragmentTransaction.commit();
-//    }
 }

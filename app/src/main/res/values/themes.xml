@@ -20,5 +20,4 @@
     <style name="Button.Yellow" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/yellow_500</item>
     </style>
-
 </resources>
