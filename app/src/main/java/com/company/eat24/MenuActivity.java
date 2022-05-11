@@ -28,4 +28,5 @@ public class MenuActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
     }
+
     }
