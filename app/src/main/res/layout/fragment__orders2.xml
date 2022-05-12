@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Order"
-                android:textColor="#000000"
+                android:textColor="@color/font_color"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -69,7 +69,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="30dp"
                     android:text="Select Table"
-                    android:textColor="#000000"
+                    android:textColor="@color/font_color"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:text="Egg Kottu"
-                        android:textColor="#000000"
+                        android:textColor="@color/font_color"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -141,7 +141,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:text="1"
-                        android:textColor="#000000"
+                        android:textColor="@color/font_color"
                         android:textStyle="bold" />
 
                     <Button
@@ -179,7 +179,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:text="Chicken Rice"
-                        android:textColor="#000000"
+                        android:textColor="@color/font_color"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -190,7 +190,7 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
                         android:text="1"
-                        android:textColor="#000000"
+                        android:textColor="@color/font_color"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -226,7 +226,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
                         android:text="Pizza"
-                        android:textColor="#000000"
+                        android:textColor="@color/font_color"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -237,7 +237,7 @@
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
                         android:text="1"
-                        android:textColor="#000000"
+                        android:textColor="@color/font_color"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
