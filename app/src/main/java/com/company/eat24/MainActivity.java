@@ -79,6 +79,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
 
+            case  R.id.orders:
+                replaceFragment(new fragmentOrder());
+                break;
+            case  R.id.orders2:
+                replaceFragment(new Fragment_Orders2());
+                break;
+
+
+
 
 
         }
