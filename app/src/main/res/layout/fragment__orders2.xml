@@ -91,13 +91,15 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/pink"
             app:cardCornerRadius="180dp"
             app:cardElevation="4dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/incrementorders"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_orange_light"
                 android:src="@drawable/increment" />
         </androidx.cardview.widget.CardView>
 
