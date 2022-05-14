@@ -10,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 import java.util.ArrayList;
 
 
@@ -26,6 +31,9 @@ public class Fragment_kitchen extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<KitchenModel> dataholder;
+    KitchenAdapter kitchenAdapter;
+
+
 
     public Fragment_kitchen() {
 
@@ -51,31 +59,38 @@ public class Fragment_kitchen extends Fragment {
                              Bundle savedInstanceState) {
 
        View view =  inflater.inflate(R.layout.fragment_kitchen, container, false);
+
        recyclerView = view.findViewById(R.id.recycleview);
-       recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-       dataholder = new ArrayList<>();
+       recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+       FirebaseRecyclerOptions<KitchenModel>options = new FirebaseRecyclerOptions.Builder<KitchenModel>().setQuery
+               (FirebaseDatabase.getInstance().getReference().child("Orders"),KitchenModel.class).build();
 
-       KitchenModel ob1 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       kitchenAdapter  = new KitchenAdapter(options);
+       recyclerView.setAdapter(kitchenAdapter);
+
+
+       //dataholder = new ArrayList<>();
+         /*KitchenModel ob1 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
        dataholder.add(ob1);
-        KitchenModel ob2 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob2);
-        KitchenModel ob3 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob3);
-        KitchenModel ob4 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob4);
-        KitchenModel ob5 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob5);
-        KitchenModel ob6 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob6);
-        KitchenModel ob7 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob7);
-        KitchenModel ob8 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob8);
-
-       recyclerView.setAdapter(new KitchenAdapter(dataholder));
-
+        KitchenModel ob2 = new KitchenModel(R.drawable.dish,"#332","2","1","Mix Rice s","Preparing");
+       dataholder.add(ob2);*/
+        //recyclerView.setAdapter(new KitchenAdapter(dataholder));
 
 
        return view;
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        kitchenAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        kitchenAdapter.stopListening();
+    }
+
+
+
 }

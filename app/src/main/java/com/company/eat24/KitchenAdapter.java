@@ -10,13 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import java.util.ArrayList;
 
 public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHolder>{
 
     ArrayList<KitchenModel> dataholder;
 
-    public KitchenAdapter(ArrayList<KitchenModel> dataholder) {
+    public KitchenAdapter(FirebaseRecyclerOptions<KitchenModel> dataholder) {
         this.dataholder = dataholder;
     }
 
@@ -30,14 +32,16 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
+         KitchenModel kitchenModel = dataholder.get(position);
+         holder.dishImage.setImageResource(kitchenModel.getDishImage());
+         holder.tableNumber.setText(kitchenModel.getTableNumber());
+         holder.orderNumber.setText(kitchenModel.getOrderNumber());
+         holder.itemName.setText(kitchenModel.getItemName());
+         holder.itemQuantity.setText(kitchenModel.getItemQuantity());
+         holder.status.setText(kitchenModel.getStatus());
 
-         holder.dishImage.setImageResource(dataholder.get(position).getDishImage());
-         holder.tableNumber.setText(dataholder.get(position).getTableNumber());
-         holder.orderNumber.setText(dataholder.get(position).getOrderNumber());
-         holder.itemName.setText(dataholder.get(position).getItemName());
-         holder.itemQuantity.setText(dataholder.get(position).getItemQuantity());
-         holder.status.setText(dataholder.get(position).getStatus());
-
+        System.out.println(position);
+        System.out.println(dataholder.size());
 
 
 
@@ -47,6 +51,12 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
     @Override
     public int getItemCount() {
         return dataholder.size();
+    }
+
+    public void startListening() {
+    }
+
+    public void stopListening() {
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{
@@ -61,7 +71,7 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
             tableNumber = itemView.findViewById(R.id.tableNumber);
             orderNumber = itemView.findViewById(R.id.orderNumber);
             itemName = itemView.findViewById(R.id.orderItem);
-            status = itemView.findViewById(R.id.btnpreparing);
+            itemQuantity = itemView.findViewById(R.id.itemquantity);
             status = itemView.findViewById(R.id.btnprepared);
 
 
