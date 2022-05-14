@@ -14,31 +14,30 @@ import java.util.ArrayList;
 
 public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHolder>{
 
-    ArrayList<KitchenModel>list;
-    Context context;
+    ArrayList<KitchenModel> dataholder;
 
-    public KitchenAdapter(ArrayList<KitchenModel> list, Context context) {
-        this.list = list;
-        this.context = context;
+    public KitchenAdapter(ArrayList<KitchenModel> dataholder) {
+        this.dataholder = dataholder;
     }
 
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_kitchen,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_kitchen,parent,false);
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        final KitchenModel model = list.get(position);
-        holder.dishImage.setImageResource(model.getDishImage());
-        holder.tableNumber.setText(model.getTableNumber());
-        holder.orderNumber.setText(model.getOrderNumber());
-        holder.itemName.setText(model.getItemName());
-        holder.itemQuantity.setText(model.getItemQuantity());
-        holder.status.setText(model.getStatus());
+
+         holder.dishImage.setImageResource(dataholder.get(position).getDishImage());
+         holder.tableNumber.setText(dataholder.get(position).getTableNumber());
+         holder.orderNumber.setText(dataholder.get(position).getOrderNumber());
+         holder.itemName.setText(dataholder.get(position).getItemName());
+         holder.itemQuantity.setText(dataholder.get(position).getItemQuantity());
+         holder.status.setText(dataholder.get(position).getStatus());
+
 
 
 
@@ -47,7 +46,7 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return dataholder.size();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{

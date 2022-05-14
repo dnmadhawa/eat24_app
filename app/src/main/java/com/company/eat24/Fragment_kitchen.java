@@ -3,6 +3,8 @@ package com.company.eat24;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +13,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 
-public class Fragment_kitchen<ActivityKitchenBinding> extends Fragment {
+public class Fragment_kitchen extends Fragment {
 
- ActivityKitchenBinding binding;
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -21,6 +23,9 @@ public class Fragment_kitchen<ActivityKitchenBinding> extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    RecyclerView recyclerView;
+    ArrayList<KitchenModel> dataholder;
 
     public Fragment_kitchen() {
 
@@ -38,15 +43,6 @@ public class Fragment_kitchen<ActivityKitchenBinding> extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityKitchenBinding.inflate(getLayoutInflater());
-        ArrayList<KitchenModel>list = new ArrayList<>();
-        list.add(new KitchenModel(R.drawable.dish,"123","1","1","Kottu L","Preparing"));
-        list.add(new KitchenModel(R.drawable.dish,"124","2","2","Mix Rice N","Prepared"));
-        list.add(new KitchenModel(R.drawable.dish,"125","3","1","Orange juice","Preparing"));
-        list.add(new KitchenModel(R.drawable.dish,"126","4","2","Chees Pasta","Prepared"));
-        list.add(new KitchenModel(R.drawable.dish,"127","5","1","Kottu","Preparing"));
-        list.add(new KitchenModel(R.drawable.dish,"128","6","2","Kottu","Preparing"));
-        list.add(new KitchenModel(R.drawable.dish,"129","7","1","Kottu","Preparing"));
 
     }
 
@@ -54,6 +50,32 @@ public class Fragment_kitchen<ActivityKitchenBinding> extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_kitchen, container, false);
+       View view =  inflater.inflate(R.layout.fragment_kitchen, container, false);
+       recyclerView = view.findViewById(R.id.recycleview);
+       recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+       dataholder = new ArrayList<>();
+
+       KitchenModel ob1 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob1);
+        KitchenModel ob2 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob2);
+        KitchenModel ob3 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob3);
+        KitchenModel ob4 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob4);
+        KitchenModel ob5 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob5);
+        KitchenModel ob6 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob6);
+        KitchenModel ob7 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob7);
+        KitchenModel ob8 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
+       dataholder.add(ob8);
+
+       recyclerView.setAdapter(new KitchenAdapter(dataholder));
+
+
+
+       return view;
     }
 }

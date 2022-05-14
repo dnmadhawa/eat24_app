@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new Fragment_Orders2());
                 break;
 
+            case  R.id.kitchen:
+                replaceFragment(new Fragment_kitchen());
+                break;
+
 
 
 
