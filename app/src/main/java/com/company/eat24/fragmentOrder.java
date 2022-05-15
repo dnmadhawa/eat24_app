@@ -1,8 +1,10 @@
 package com.company.eat24;
 
+import android.R.layout;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -33,7 +37,7 @@ public class fragmentOrder extends Fragment {
 
     ValueEventListener listener;
     ArrayList<String> list;
-    ArrayAdapter adapter;
+    ArrayAdapter<String> adapter;
 
 
 
@@ -63,7 +67,11 @@ public class fragmentOrder extends Fragment {
         dbref = FirebaseDatabase.getInstance().getReference("Orders");
 
         list = new ArrayList<String>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,list);
+        //noinspection rawtypes
+        adapter = new ArrayAdapter<>(fragmentOrder.this,
+                layout.simple_spinner_dropdown_item,
+                list);
+        spinner.setAdapter(adapter);
 
 
         btnadd.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +88,19 @@ public class fragmentOrder extends Fragment {
 
     }
     public void fetchdata(){
+      listener = dbref.addValueEventListener(new ValueEventListener() {
+          @Override
+          public void onDataChange(@NonNull DataSnapshot snapshot) {
+              for(DataSnapshot mydata:snapshot.getChildren())
+                  list.add(mydata.getValue().toString());
+                  adapter.notifyDataSetChanged();
+          }
 
+          @Override
+          public void onCancelled(@NonNull DatabaseError error) {
+
+          }
+      });
     }
 
 
