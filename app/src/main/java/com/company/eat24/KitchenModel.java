@@ -3,16 +3,14 @@ package com.company.eat24;
 public class KitchenModel {
     int dishImage;
     String orderNumber;
-    String tableNumber;
     String itemQuantity;
     String itemName;
     String status;
 
 
-    public KitchenModel(int dishImage, String orderNumber, String tableNumber, String itemQuantity, String itemName, String status) {
+    public KitchenModel(int dishImage, String orderNumber, String itemQuantity, String itemName, String status) {
         this.dishImage = dishImage;
         this.orderNumber = orderNumber;
-        this.tableNumber = tableNumber;
         this.itemQuantity = itemQuantity;
         this.itemName = itemName;
         this.status = status;
@@ -34,13 +32,6 @@ public class KitchenModel {
         this.orderNumber = orderNumber;
     }
 
-    public String getTableNumber() {
-        return tableNumber;
-    }
-
-    public void setTableNumber(String tableNumber) {
-        this.tableNumber = tableNumber;
-    }
 
     public String getItemQuantity() {
         return itemQuantity;

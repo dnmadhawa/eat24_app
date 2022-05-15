@@ -74,8 +74,6 @@ public class Fragment_kitchen extends Fragment {
         database = getInstance().getReference("Orders");
         recyclerView.setHasFixedSize(true);
 
-       //kitchenAdapter  = new KitchenAdapter(options);
-       //recyclerView.setAdapter(kitchenAdapter);
 
 
          list = new ArrayList<>();
@@ -98,12 +96,6 @@ public class Fragment_kitchen extends Fragment {
 
              }
          });
-
-         /*KitchenModel ob1 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
-       dataholder.add(ob1);
-        KitchenModel ob2 = new KitchenModel(R.drawable.dish,"#332","2","1","Mix Rice s","Preparing");
-       dataholder.add(ob2);*/
-        //recyclerView.setAdapter(new KitchenAdapter(dataholder));
 
 
        return view;

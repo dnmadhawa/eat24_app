@@ -4,22 +4,38 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 public class fragmentOrder extends Fragment {
     Spinner spinner;
-    DatabaseReference db;
+    Button btnadd;
+    DatabaseReference dbref;
+    RecyclerView recyclerView;
+
+    ValueEventListener listener;
+    ArrayList<String> list;
+    ArrayAdapter adapter;
+
+
 
 
     public fragmentOrder() {
@@ -27,17 +43,9 @@ public class fragmentOrder extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-     /*   if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        */
 
 
     }
@@ -45,37 +53,39 @@ public class fragmentOrder extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_order,container,false);
+        View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        recyclerView = view.findViewById(R.id.recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
+
+        spinner = view.findViewById(R.id.spinner);
+        btnadd = view.findViewById(R.id.addbtn);
+        dbref = FirebaseDatabase.getInstance().getReference("Orders");
+
+        list = new ArrayList<String>();
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,list);
 
 
-        return rootView;
-
-
-
-    }
-
-    private void initspinnerfooter() {
-
-        String[] items = new String[]{
-                "1","2","3","4","5","6","7","8","9","10",
-        };
-
-        ArrayAdapter<String>adapter  = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,items);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("item", (String) parent.getItemAtPosition(position));
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onClick(View view) {
 
             }
         });
+
+        fetchdata();
+
+        return view;
+
+
     }
+    public void fetchdata(){
+
+    }
+
+
+
+
 
 
 }

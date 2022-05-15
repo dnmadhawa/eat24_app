@@ -34,7 +34,6 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
 
          KitchenModel kitchenModel = list.get(position);
          holder.dishImage.setImageResource(kitchenModel.getDishImage());
-         holder.tableNumber.setText(kitchenModel.getTableNumber());
          holder.orderNumber.setText(kitchenModel.getOrderNumber());
          holder.itemName.setText(kitchenModel.getItemName());
          holder.itemQuantity.setText(kitchenModel.getItemQuantity());
@@ -58,17 +57,16 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
     public class viewHolder extends RecyclerView.ViewHolder{
 
      ImageView dishImage;
-     TextView orderNumber,tableNumber,itemQuantity,itemName,status;
+     TextView orderNumber,itemQuantity,itemName,status;
 
 
         public viewHolder(@NonNull View itemView){
             super(itemView);
             dishImage = itemView.findViewById(R.id.dish);
-            tableNumber = itemView.findViewById(R.id.tableNumber);
             orderNumber = itemView.findViewById(R.id.orderNumber);
             itemName = itemView.findViewById(R.id.orderItem);
             itemQuantity = itemView.findViewById(R.id.itemquantity);
-            status = itemView.findViewById(R.id.btnprepared);
+            status = itemView.findViewById(R.id.btnpreparing);
 
 
         }
