@@ -1,7 +1,10 @@
 package com.company.eat24;
 
+import static com.google.firebase.database.FirebaseDatabase.getInstance;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,9 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,9 +36,9 @@ public class Fragment_kitchen extends Fragment {
     private String mParam2;
 
     RecyclerView recyclerView;
-    ArrayList<KitchenModel> dataholder;
-    KitchenAdapter kitchenAdapter;
-
+    ArrayList<KitchenModel> list;
+    KitchenAdapter adapter;
+    DatabaseReference database;
 
 
     public Fragment_kitchen() {
@@ -62,14 +68,37 @@ public class Fragment_kitchen extends Fragment {
 
        recyclerView = view.findViewById(R.id.recycleview);
        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
-       FirebaseRecyclerOptions<KitchenModel>options = new FirebaseRecyclerOptions.Builder<KitchenModel>().setQuery
-               (FirebaseDatabase.getInstance().getReference().child("Orders"),KitchenModel.class).build();
+       //FirebaseRecyclerOptions<KitchenModel>options = new FirebaseRecyclerOptions.Builder<KitchenModel>().setQuery
+             //  (FirebaseDatabase.getInstance().getReference().child("Orders"),KitchenModel.class).build();
 
-       kitchenAdapter  = new KitchenAdapter(options);
-       recyclerView.setAdapter(kitchenAdapter);
+        database = getInstance().getReference("Orders");
+        recyclerView.setHasFixedSize(true);
+
+       //kitchenAdapter  = new KitchenAdapter(options);
+       //recyclerView.setAdapter(kitchenAdapter);
 
 
-       //dataholder = new ArrayList<>();
+         list = new ArrayList<>();
+         adapter = new KitchenAdapter(this,list);
+         recyclerView.setAdapter(adapter);
+
+         database.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    KitchenModel  kitchenModel = dataSnapshot.getValue(KitchenModel.class);
+                    list.add(kitchenModel);
+                 }
+                 adapter.notifyDataSetChanged();
+
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError error) {
+
+             }
+         });
+
          /*KitchenModel ob1 = new KitchenModel(R.drawable.dish,"#333","1","1","Mix Rice L","Preparing");
        dataholder.add(ob1);
         KitchenModel ob2 = new KitchenModel(R.drawable.dish,"#332","2","1","Mix Rice s","Preparing");
@@ -79,17 +108,9 @@ public class Fragment_kitchen extends Fragment {
 
        return view;
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        kitchenAdapter.startListening();
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        kitchenAdapter.stopListening();
-    }
+
+
 
 
 

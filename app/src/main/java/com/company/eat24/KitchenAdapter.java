@@ -10,16 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-
 import java.util.ArrayList;
 
 public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHolder>{
 
-    ArrayList<KitchenModel> dataholder;
+    ArrayList<KitchenModel> list;
 
-    public KitchenAdapter(FirebaseRecyclerOptions<KitchenModel> dataholder) {
-        this.dataholder = dataholder;
+
+    public KitchenAdapter(Fragment_kitchen fragment_kitchen, ArrayList<KitchenModel> list) {
+        this.list = list;
+
     }
 
     @NonNull
@@ -32,7 +32,7 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-         KitchenModel kitchenModel = dataholder.get(position);
+         KitchenModel kitchenModel = list.get(position);
          holder.dishImage.setImageResource(kitchenModel.getDishImage());
          holder.tableNumber.setText(kitchenModel.getTableNumber());
          holder.orderNumber.setText(kitchenModel.getOrderNumber());
@@ -41,7 +41,7 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
          holder.status.setText(kitchenModel.getStatus());
 
         System.out.println(position);
-        System.out.println(dataholder.size());
+        System.out.println(list.size());
 
 
 
@@ -50,14 +50,10 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
 
     @Override
     public int getItemCount() {
-        return dataholder.size();
+        return list.size();
     }
 
-    public void startListening() {
-    }
 
-    public void stopListening() {
-    }
 
     public class viewHolder extends RecyclerView.ViewHolder{
 
