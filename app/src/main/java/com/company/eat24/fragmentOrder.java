@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,13 +33,15 @@ import java.util.ArrayList;
 
 public class fragmentOrder extends Fragment {
     Spinner spinner;
-    Button btnadd;
+    CardView btnadd;
     DatabaseReference dbref;
     RecyclerView recyclerView;
 
     ValueEventListener listener;
-    ArrayList<String> list;
-    ArrayAdapter<String> adapter;
+    ArrayList<OrderModel> list;
+    OrderAdapter adapter;
+
+    String[] table = {"table01","table02","table03","table04","table05","table06"};
 
 
 
@@ -52,6 +56,8 @@ public class fragmentOrder extends Fragment {
         super.onCreate(savedInstanceState);
 
 
+
+
     }
 
     @Override
@@ -59,20 +65,49 @@ public class fragmentOrder extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
-        recyclerView = view.findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
 
-        spinner = view.findViewById(R.id.spinner);
+        recyclerView = view.findViewById(R.id.recycler);
         btnadd = view.findViewById(R.id.addbtn);
         dbref = FirebaseDatabase.getInstance().getReference("Orders");
 
-        list = new ArrayList<String>();
-        //noinspection rawtypes
-        adapter = new ArrayAdapter<>(fragmentOrder.this,
-                layout.simple_spinner_dropdown_item,
-                list);
-        spinner.setAdapter(adapter);
 
+
+        Spinner spino = view.findViewById(R.id.spinner);
+
+        // Create the instance of ArrayAdapter
+        // having the list of courses
+        ArrayAdapter ad = new ArrayAdapter(getContext(), layout.simple_spinner_item, table);
+
+        // set simple layout resource file
+        // for each item of spinner
+        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Set the ArrayAdapter (ad) data on the
+        // Spinner which binds data to spinner
+        spino.setAdapter(ad);
+        spino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                System.out.println(table[i]);
+                fetchdata(table[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+
+
+
+       //fetchdata();
+        //noinspection rawtypes
+
+        //spinner.setAdapter(adapter);
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,19 +116,24 @@ public class fragmentOrder extends Fragment {
             }
         });
 
-        fetchdata();
+
 
         return view;
 
 
     }
-    public void fetchdata(){
-      listener = dbref.addValueEventListener(new ValueEventListener() {
+    public void fetchdata(String td){
+        list = new ArrayList<OrderModel>();
+       dbref.orderByChild("tableNo").equalTo(td).addValueEventListener(new ValueEventListener() {
           @Override
           public void onDataChange(@NonNull DataSnapshot snapshot) {
-              for(DataSnapshot mydata:snapshot.getChildren())
-                  list.add(mydata.getValue().toString());
+              for(DataSnapshot mydata:snapshot.getChildren()) {
+                  OrderModel model = mydata.getValue(OrderModel.class);
+                  list.add(model);
+              }
+
                   adapter.notifyDataSetChanged();
+
           }
 
           @Override
@@ -101,7 +141,16 @@ public class fragmentOrder extends Fragment {
 
           }
       });
+
+        adapter = new OrderAdapter(list,getContext());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
+        recyclerView.setAdapter(adapter);
+
     }
+
+
+
+
 
 
 

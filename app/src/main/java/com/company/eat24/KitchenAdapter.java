@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHolder>{
 
-    ArrayList<KitchenModel> list;
+    ArrayList<OrderModel> list;
 
 
-    public KitchenAdapter(Fragment_kitchen fragment_kitchen, ArrayList<KitchenModel> list) {
+    public KitchenAdapter(Fragment_kitchen fragment_kitchen, ArrayList<OrderModel> list) {
         this.list = list;
 
     }
@@ -32,12 +32,18 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-         KitchenModel kitchenModel = list.get(position);
-         holder.dishImage.setImageResource(kitchenModel.getDishImage());
-         holder.orderNumber.setText(kitchenModel.getOrderNumber());
-         holder.itemName.setText(kitchenModel.getItemName());
-         holder.itemQuantity.setText(kitchenModel.getItemQuantity());
+         OrderModel kitchenModel = list.get(position);
+
+         holder.orderNumber.setText(kitchenModel.getOrderID());
+         holder.itemName.setText(kitchenModel.getItem());
+         holder.itemQuantity.setText(kitchenModel.getQuantity());
          holder.status.setText(kitchenModel.getStatus());
+         holder.status.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
+             }
+         });
 
         System.out.println(position);
         System.out.println(list.size());
@@ -62,7 +68,6 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
 
         public viewHolder(@NonNull View itemView){
             super(itemView);
-            dishImage = itemView.findViewById(R.id.dish);
             orderNumber = itemView.findViewById(R.id.orderNumber);
             itemName = itemView.findViewById(R.id.orderItem);
             itemQuantity = itemView.findViewById(R.id.itemquantity);

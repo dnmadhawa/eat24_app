@@ -36,7 +36,7 @@ public class Fragment_kitchen extends Fragment {
     private String mParam2;
 
     RecyclerView recyclerView;
-    ArrayList<KitchenModel> list;
+    ArrayList<OrderModel> list;
     KitchenAdapter adapter;
     DatabaseReference database;
 
@@ -66,25 +66,23 @@ public class Fragment_kitchen extends Fragment {
 
        View view =  inflater.inflate(R.layout.fragment_kitchen, container, false);
 
-       recyclerView = view.findViewById(R.id.recycleview);
-       recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+
        //FirebaseRecyclerOptions<KitchenModel>options = new FirebaseRecyclerOptions.Builder<KitchenModel>().setQuery
              //  (FirebaseDatabase.getInstance().getReference().child("Orders"),KitchenModel.class).build();
 
         database = getInstance().getReference("Orders");
-        recyclerView.setHasFixedSize(true);
+
 
 
 
          list = new ArrayList<>();
-         adapter = new KitchenAdapter(this,list);
-         recyclerView.setAdapter(adapter);
+
 
          database.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot snapshot) {
                  for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    KitchenModel  kitchenModel = dataSnapshot.getValue(KitchenModel.class);
+                    OrderModel  kitchenModel = dataSnapshot.getValue(OrderModel.class);
                     list.add(kitchenModel);
                  }
                  adapter.notifyDataSetChanged();
@@ -96,7 +94,11 @@ public class Fragment_kitchen extends Fragment {
 
              }
          });
-
+        recyclerView = view.findViewById(R.id.recycleview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+        recyclerView.setHasFixedSize(true);
+        adapter = new KitchenAdapter(this,list);
+        recyclerView.setAdapter(adapter);
 
        return view;
     }

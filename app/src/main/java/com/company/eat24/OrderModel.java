@@ -1,31 +1,26 @@
 package com.company.eat24;
 
 public class OrderModel {
-    int deleteImage;
-    String orderNum,item,itemQuant,orderStatus;
 
-    public OrderModel(int deleteImage, String orderNum, String item, String itemQuant, String orderStatus) {
-        this.deleteImage = deleteImage;
-        this.orderNum = orderNum;
+    String orderID, item, quantity, status, tableNo;
+
+    public OrderModel() {
+    }
+
+    public OrderModel(String orderID, String item, String quantity, String status, String tableNo) {
+        this.orderID = orderID;
         this.item = item;
-        this.itemQuant = itemQuant;
-        this.orderStatus = orderStatus;
+        this.quantity = quantity;
+        this.status = status;
+        this.tableNo = tableNo;
     }
 
-    public int getDeleteImage() {
-        return deleteImage;
+    public String getOrderID() {
+        return orderID;
     }
 
-    public void setDeleteImage(int deleteImage) {
-        this.deleteImage = deleteImage;
-    }
-
-    public String getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(String orderNum) {
-        this.orderNum = orderNum;
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 
     public String getItem() {
@@ -36,19 +31,27 @@ public class OrderModel {
         this.item = item;
     }
 
-    public String getItemQuant() {
-        return itemQuant;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public void setItemQuant(String itemQuant) {
-        this.itemQuant = itemQuant;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTableNo() {
+        return tableNo;
+    }
+
+    public void setTableNo(String tableNo) {
+        this.tableNo = tableNo;
     }
 }

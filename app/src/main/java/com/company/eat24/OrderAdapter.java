@@ -1,5 +1,6 @@
 package com.company.eat24;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,11 @@ import java.util.ArrayList;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.viewHolder>{
 
     ArrayList<OrderModel> list;
+    Context context;
 
-
-    public OrderAdapter(ArrayList<OrderModel> list) {
+    public OrderAdapter(ArrayList<OrderModel> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -33,10 +35,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.viewHolder>{
 
         OrderModel orderModel = list.get(position);
 
-        holder.orderNum.setText(orderModel.getOrderNum());
+        holder.orderNum.setText(orderModel.getOrderID());
         holder.item.setText(orderModel.getItem());
-        holder.itemQuant.setText(orderModel.getItemQuant());
-        holder.orderStatus.setText(orderModel.getOrderStatus());
+        holder.itemQuant.setText(orderModel.getQuantity());
+        holder.orderStatus.setText(orderModel.getStatus());
 
         System.out.println(position);
         System.out.println(list.size());
