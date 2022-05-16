@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case  R.id.delivery_list:
                 replaceFragment(new DeliveryListFragment());
                 break;
+            case  R.id.billing:
+                replaceFragment(new BillingFragment());
+                break;
             case R.id.nav_gallery:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
