@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,54 +13,45 @@
         card_view:cardCornerRadius="12dp"
         card_view:cardElevation="6dp">
 
-        <LinearLayout
+        <GridLayout
             android:paddingVertical="5dp"
             android:paddingHorizontal="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alignmentMode="alignMargins"
-            android:orientation="horizontal"
+            android:columnCount="2"
             android:columnOrderPreserved="false">
 
             <LinearLayout
-                android:layout_columnWeight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_columnWeight="1"
                 android:padding="3dp">
 
                 <TextView
-                    android:id="@+id/delivery_id"
+                    android:id="@+id/dl_id_price"
                     android:layout_width="165dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:text="#004"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/font_color" />
-                <TextView
-                    android:id="@+id/delivery_amount"
-                    android:layout_width="165dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:text="Rs1200.00"
+                    android:text="#002 - Rs200.00"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     android:textColor="@color/font_color" />
 
                 <TextView
-                    android:id="@+id/delivery_datatime"
+                    android:id="@+id/dl_date"
                     android:layout_width="165dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="11dp"
-                    android:text="08/05/2022 05.30p.m"
+                    android:text="08/05/2022 05.10p.m"
                     android:textColor="@color/font_color"
                     android:textSize="12dp" />
             </LinearLayout>
 
 
             <TextView
-                android:id="@+id/delivery_status"
+                android:id="@+id/dl_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="2dp"
@@ -70,27 +60,11 @@
                 android:layout_margin="12dp"
                 android:textStyle="bold"
                 android:background="@drawable/bg_rounded"
-                android:text="Pending"
+                android:backgroundTint="#37A425"
+                android:text="Completed"
                 android:textColor="@color/white"
                 android:textSize="12dp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="45dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="5dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/right_arrow"
-                    tools:ignore="ContentDescription" />
-            </RelativeLayout>
-        </LinearLayout>
-
+        </GridLayout>
 
     </androidx.cardview.widget.CardView>
 
