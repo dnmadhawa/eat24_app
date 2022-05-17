@@ -82,7 +82,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_gallery:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                break;*/
+
+           /* case  R.id.orders11:
+                replaceFragment(new fragmentOrder());
+                break;*/
+            case  R.id.orders11:
+                replaceFragment(new fragmentOrder());
                 break;
+
+            case  R.id.kitchen:
+                replaceFragment(new Fragment_kitchen());
+                break;
+
+
+
+
 
         }
 

@@ -9,7 +9,7 @@
             android:icon="@drawable/burger"
             android:title="@string/dashboard" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/orders11"
             android:icon="@drawable/food_icon"
             android:title="@string/orders" />
         <item
