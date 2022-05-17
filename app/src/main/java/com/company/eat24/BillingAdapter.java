@@ -1,6 +1,5 @@
 package com.company.eat24;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.viewHolder>{
+public class BillingAdapter extends RecyclerView.Adapter<BillingAdapter.viewHolder>{
 
     ArrayList<OrderModel> list;
-    Context context;
 
-    public OrderAdapter(ArrayList<OrderModel> list, Context context) {
+
+    public BillingAdapter(ArrayList<OrderModel> list) {
         this.list = list;
-        this.context = context;
+
     }
 
     @NonNull
@@ -33,15 +31,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.viewHolder>{
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        OrderModel orderModel = list.get(position);
+         OrderModel orderModel = list.get(position);
+         holder.itemprice.setText(orderModel.getPrice());
+         holder.itemName.setText(orderModel.getItem());
+         holder.itemQuantity.setText(orderModel.getQuantity());
+         holder.status.setText(orderModel.getStatus());
 
-        holder.orderNum.setText(orderModel.getOrderID());
-        holder.item.setText(orderModel.getItem());
-        holder.itemQuant.setText(orderModel.getQuantity());
-        holder.orderStatus.setText(orderModel.getStatus());
-
-        System.out.println(position);
-        System.out.println(list.size());
 
 
 
@@ -57,17 +52,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.viewHolder>{
 
     public class viewHolder extends RecyclerView.ViewHolder{
 
-
-        TextView orderNum,itemQuant,item,orderStatus;
+     TextView itemprice,itemQuantity,itemName,status;
 
 
         public viewHolder(@NonNull View itemView){
             super(itemView);
-
-            orderNum = itemView.findViewById(R.id.ordernum);
-            item = itemView.findViewById(R.id.items);
-            itemQuant = itemView.findViewById(R.id.quant);
-            orderStatus = itemView.findViewById(R.id.orderstatus);
+            itemName = itemView.findViewById(R.id.bo_name);
+            itemprice = itemView.findViewById(R.id.bo_price);
+            itemQuantity = itemView.findViewById(R.id.bo_qty);
+            status = itemView.findViewById(R.id.bo_status);
 
 
         }

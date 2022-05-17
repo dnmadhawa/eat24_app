@@ -2,17 +2,26 @@ package com.company.eat24;
 
 public class OrderModel {
 
-    String orderID, item, quantity, status, tableNo;
+    String orderID, item, quantity, status, tableNo,price;
 
     public OrderModel() {
     }
 
-    public OrderModel(String orderID, String item, String quantity, String status, String tableNo) {
+    public OrderModel(String orderID, String item, String quantity, String status, String tableNo, String price) {
         this.orderID = orderID;
         this.item = item;
         this.quantity = quantity;
         this.status = status;
         this.tableNo = tableNo;
+        this.price = price;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getOrderID() {

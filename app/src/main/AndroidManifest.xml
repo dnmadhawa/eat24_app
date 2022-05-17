@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eat24">
         <activity
+            android:name=".SingleBill"
+            android:exported="false" />
+        <activity
             android:name=".SelectmenuActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="6dp"
+    android:columnCount="3"
+    android:orientation="horizontal"
+    android:showDividers="middle">
+
+    <TextView
+        android:id="@+id/bo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="pizza"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/bo_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="01"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/bo_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:text="1000.00"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_columnSpan="3"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/bo_status"
+            android:layout_width="88dp"
+            android:layout_height="26dp"
+            android:layout_centerHorizontal="true"
+            android:background="#84CD2F"
+            android:text="Processing"
+            android:textColor="#EAE7E7"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    </GridLayout>
