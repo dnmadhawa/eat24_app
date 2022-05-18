@@ -1,6 +1,7 @@
 package com.company.eat24;
 
 import android.R.layout;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -31,9 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class fragmentOrder extends Fragment {
+public class fragmentOrder<Public> extends Fragment {
     Spinner spinner;
-    CardView btnadd;
+    Button btnadd;
     DatabaseReference dbref;
     RecyclerView recyclerView;
 
@@ -43,6 +44,7 @@ public class fragmentOrder extends Fragment {
 
     String[] table = {"table01","table02","table03","table04","table05","table06"};
 
+    public static String tableNo="table01";
 
 
 
@@ -70,6 +72,7 @@ public class fragmentOrder extends Fragment {
         btnadd = view.findViewById(R.id.addbtn);
         dbref = FirebaseDatabase.getInstance().getReference("Orders");
 
+//        btnadd
 
 
         Spinner spino = view.findViewById(R.id.spinner);
@@ -88,9 +91,10 @@ public class fragmentOrder extends Fragment {
         spino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                tableNo = table[i];
                 System.out.println(table[i]);
                 fetchdata(table[i]);
+
             }
 
             @Override
@@ -112,7 +116,8 @@ public class fragmentOrder extends Fragment {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getContext(),FoodMenu.class);
+     startActivity(intent);
             }
         });
 
@@ -123,10 +128,11 @@ public class fragmentOrder extends Fragment {
 
     }
     public void fetchdata(String td){
-        list = new ArrayList<OrderModel>();
+
        dbref.orderByChild("tableNo").equalTo(td).addValueEventListener(new ValueEventListener() {
           @Override
           public void onDataChange(@NonNull DataSnapshot snapshot) {
+              list = new ArrayList<OrderModel>();
               for(DataSnapshot mydata:snapshot.getChildren()) {
                   OrderModel model = mydata.getValue(OrderModel.class);
                   list.add(model);
@@ -151,7 +157,10 @@ public class fragmentOrder extends Fragment {
 
 
 
-
+// public void nextpage(View view){
+//     Intent intent = new Intent(getContext(),FoodMenu.class);
+//     startActivity(intent);
+// }
 
 
 
