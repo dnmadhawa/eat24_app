@@ -69,32 +69,35 @@ public class NewDelivery extends AppCompatActivity {
     }
 
     public void submitDOrder(View view){
-        HashMap hashMap = new HashMap();
-        hashMap.put("cusName", name.getText().toString());
-        hashMap.put("address", address.getText().toString());
-        hashMap.put("delivery_fee",  String.format("%1.2f", Float.parseFloat(delivery_fee.getText().toString())));
-        hashMap.put("mobile_number", mobile_number.getText().toString());
-        hashMap.put("note", note.getText().toString());
-        hashMap.put("delivery_status", "Not Delivered");
+        if (name.getText().toString().isEmpty() || address.getText().toString().isEmpty() || delivery_fee.getText().toString().isEmpty() || mobile_number.getText().toString().isEmpty()){
+            Toast.makeText(NewDelivery.this,"Please fill the required field", Toast.LENGTH_LONG).show();
+        }else {
+            HashMap hashMap = new HashMap();
+            hashMap.put("cusName", name.getText().toString());
+            hashMap.put("address", address.getText().toString());
+            hashMap.put("delivery_fee", String.format("%1.2f", Float.parseFloat(delivery_fee.getText().toString())));
+            hashMap.put("mobile_number", mobile_number.getText().toString());
+            hashMap.put("note", note.getText().toString());
+            hashMap.put("delivery_status", "Not Delivered");
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        hashMap.put("datetime", dateFormat.format(date));
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            hashMap.put("datetime", dateFormat.format(date));
 
-        Double tot = DeliveryFoodMenu.total +Double.parseDouble(delivery_fee.getText().toString());
-        hashMap.put("total_amount", String.format("%1.2f", tot));
-        hashMap.put("d_id", String.valueOf(maxid+1));
+            Double tot = DeliveryFoodMenu.total + Double.parseDouble(delivery_fee.getText().toString());
+            hashMap.put("total_amount", String.format("%1.2f", tot));
+            hashMap.put("d_id", String.valueOf(maxid + 1));
 
-        hashMap.put("items", DeliveryFoodMenu.items);
+            hashMap.put("items", DeliveryFoodMenu.items);
 
-        reff.child(String.valueOf(maxid+1)).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(NewDelivery.this,"Successfully ordered", Toast.LENGTH_LONG).show();
-                finish();
-            }
-        });
-
+            reff.child(String.valueOf(maxid + 1)).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(NewDelivery.this, "Successfully ordered", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+        }
     }
 
     public void onBack(View view) {

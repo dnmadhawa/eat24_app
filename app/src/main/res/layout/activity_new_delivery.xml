@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -62,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:text="Name"
+                    android:text="Name*"
                     android:textSize="18dp"
                     tools:ignore="ObsoleteLayoutParam" />
 
@@ -91,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:text="Mobile Number"
+                    android:text="Mobile Number*"
                     android:textSize="18dp"
                     tools:ignore="ObsoleteLayoutParam" />
 
@@ -120,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:text="Address"
+                    android:text="Address*"
                     android:textSize="18dp"
                     tools:ignore="ObsoleteLayoutParam" />
 
@@ -178,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:text="Delivery Fee"
+                    android:text="Delivery Fee*"
                     android:textSize="18dp"
                     tools:ignore="ObsoleteLayoutParam" />
 
@@ -197,6 +198,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:padding="0dp"
+                        android:inputType="numberDecimal"
                         android:id="@+id/c_fee"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
