@@ -138,7 +138,10 @@ public class fragmentOrder<Public> extends Fragment {
                   list.add(model);
               }
 
-                  adapter.notifyDataSetChanged();
+//                  adapter.notifyDataSetChanged();
+              adapter = new OrderAdapter(list,getContext());
+              recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
+              recyclerView.setAdapter(adapter);
 
           }
 
@@ -148,9 +151,7 @@ public class fragmentOrder<Public> extends Fragment {
           }
       });
 
-        adapter = new OrderAdapter(list,getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true));
-        recyclerView.setAdapter(adapter);
+
 
     }
 
