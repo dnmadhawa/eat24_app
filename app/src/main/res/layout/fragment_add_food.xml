@@ -141,7 +141,7 @@
             android:text="Back"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:backgroundTint="#98AFC7"
             android:textSize="21dp"
