@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@color/yellow_500"
+    android:columnCount="3"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="5dp"
+    android:rowCount="2">
+
+    <TextView
+        android:id="@+id/ie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Creamy chicken cheese kottu"
+        android:textSize="14dp"
+        tools:ignore="ObsoleteLayoutParam" />
+
+    <TextView
+        android:id="@+id/ie_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="2"
+        android:textSize="14dp"
+        tools:ignore="ObsoleteLayoutParam" />
+
+    <TextView
+        android:id="@+id/ie_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="1000.00"
+        android:textSize="14dp"
+        tools:ignore="ObsoleteLayoutParam" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1">
+
+        <TextView
+            android:id="@+id/ie_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/status_botton"
+            android:backgroundTint="#E47575"
+            android:text="Prepared"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+
+            tools:ignore="ObsoleteLayoutParam" />
+    </RelativeLayout>
+</GridLayout>

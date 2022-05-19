@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.company.eat24">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -39,6 +41,27 @@
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.DeliveryOrderDetail"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DeliveryFoodMenu"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".activities.EditDeliveryOrder"
+            android:exported="false" />
+        <activity
+            android:name=".activities.NewDelivery"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

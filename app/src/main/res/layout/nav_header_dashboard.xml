@@ -18,15 +18,15 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/profile"
+        android:paddingTop= "@dimen/nav_header_vertical_spacing"
+        android:src="@drawable/logo"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Amal Perera"
+        android:text="Eat24"
+        android:textStyle="bold"
         android:textSize="16sp"
         android:textColor="#685B01" />
 
