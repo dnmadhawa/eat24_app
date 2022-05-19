@@ -45,7 +45,7 @@ public class DeliveryEditAdapter extends RecyclerView.Adapter<DeliveryEditAdapte
                 holder.ie_status.getBackground().setTint(Color.parseColor("#6EE95A"));
                 EditDeliveryOrder.isReady = true;
                 break;
-            case "Panding":
+            case "Pending":
                 holder.ie_status.getBackground().setTint(Color.parseColor("#75C3E4"));
                 break;
             case "Preparing":

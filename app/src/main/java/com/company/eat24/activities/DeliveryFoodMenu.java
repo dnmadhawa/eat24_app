@@ -171,7 +171,7 @@ public class DeliveryFoodMenu extends AppCompatActivity {
             item.put("foodname", fname);
             item.put("foodprice", fprice);
             item.put("qty", Integer.toString(minteger));
-            item.put("status", "Panding");
+            item.put("status", "Pending");
             Double t = Double.parseDouble(fprice) * minteger;
 //            System.out.println(total);
             total =total+ t;
