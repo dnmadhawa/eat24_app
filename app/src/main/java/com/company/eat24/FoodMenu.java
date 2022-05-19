@@ -188,7 +188,7 @@ public class FoodMenu<DeliveryFoodAdapter, DeliveryFoodMenu> extends AppCompatAc
             item.put("item", fname);
             item.put("price", fprice);
             item.put("quantity", Integer.toString(minteger));
-            item.put("status", "Panding");
+            item.put("status", "Pending");
             item.put("tableNo", fragmentOrder.tableNo);
             item.put("orderID", String.valueOf(maxid+1));
             Double t = Double.parseDouble(fprice) * minteger;
