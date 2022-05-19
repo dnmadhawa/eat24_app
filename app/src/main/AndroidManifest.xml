@@ -31,6 +31,9 @@
             android:name=".SingleBill"
             android:exported="false" />
         <activity
+            android:name=".FoodMenu"
+            android:exported="false" />
+        <activity
             android:name=".SelectmenuActivity"
             android:exported="false" />
         <activity

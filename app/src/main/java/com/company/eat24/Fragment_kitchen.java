@@ -22,6 +22,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Fragment_kitchen extends Fragment {
@@ -34,11 +36,14 @@ public class Fragment_kitchen extends Fragment {
 
     private String mParam1;
     private String mParam2;
-
+    int i = 0;
     RecyclerView recyclerView;
     ArrayList<OrderModel> list;
+    ArrayList<OrderModel> list1;
     KitchenAdapter adapter;
+    KitchenDAdapter adapter2;
     DatabaseReference database;
+    DatabaseReference ref;
 
 
     public Fragment_kitchen() {
@@ -75,17 +80,22 @@ public class Fragment_kitchen extends Fragment {
 
 
 
-         list = new ArrayList<>();
+
 
 
          database.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 list = new ArrayList<>();
                  for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     OrderModel  kitchenModel = dataSnapshot.getValue(OrderModel.class);
                     list.add(kitchenModel);
                  }
-                 adapter.notifyDataSetChanged();
+                 recyclerView = view.findViewById(R.id.recycleview);
+                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+                 recyclerView.setHasFixedSize(true);
+                 adapter = new KitchenAdapter(list);
+                 recyclerView.setAdapter(adapter);
 
              }
 
@@ -94,11 +104,40 @@ public class Fragment_kitchen extends Fragment {
 
              }
          });
-        recyclerView = view.findViewById(R.id.recycleview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
-        recyclerView.setHasFixedSize(true);
-        adapter = new KitchenAdapter(this,list);
-        recyclerView.setAdapter(adapter);
+
+        ref = getInstance().getReference("delivery");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list1 = new ArrayList<>();
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Map<String, Object> td = (HashMap<String, Object>) dataSnapshot.getValue();
+                    ArrayList<HashMap> items =  (ArrayList<HashMap>) td.get("items");
+                    i=0;
+                    items.forEach((e) -> {
+                        Map<String, Object> data = (HashMap<String, Object>)  e;
+                        System.out.println(data.get("foodname"));
+                        OrderModel  kitchenModel = new OrderModel(Integer.toString(i) , data.get("foodname").toString(), data.get("qty").toString(), data.get("status").toString(), td.get("d_id").toString());
+                        list1.add(kitchenModel);
+                        i= i+1;
+                    });
+                    System.out.println(list1);
+                }
+                recyclerView = view.findViewById(R.id.Drecycleview);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,true));
+                recyclerView.setHasFixedSize(true);
+                adapter2 = new KitchenDAdapter(list1);
+                recyclerView.setAdapter(adapter2);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
        return view;
     }

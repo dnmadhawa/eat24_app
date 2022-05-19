@@ -1,7 +1,5 @@
 package com.company.eat24;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHolder>{
+public class KitchenDAdapter extends RecyclerView.Adapter<KitchenDAdapter.viewHolder>{
 
     ArrayList<OrderModel> list;
 
     DatabaseReference dbref;
-    public KitchenAdapter( ArrayList<OrderModel> list) {
+    public KitchenDAdapter(ArrayList<OrderModel> list) {
         this.list = list;
 
     }
@@ -40,7 +36,8 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
 
          OrderModel kitchenModel = list.get(position);
 
-         holder.orderNumber.setText(kitchenModel.getOrderID());
+         holder.orderNumber.setText("D"+kitchenModel.getOrderID());
+         System.out.println("sdd"+kitchenModel.getOrderID());
          holder.itemName.setText(kitchenModel.getItem());
          holder.itemQuantity.setText(kitchenModel.getQuantity());
          holder.status.setText(kitchenModel.getStatus());
@@ -49,11 +46,11 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.viewHold
              public void onClick(View view) {
                  switch (kitchenModel.getStatus()){
                      case "Pending":
-                         dbref = FirebaseDatabase.getInstance().getReference("Orders");
+                         dbref = FirebaseDatabase.getInstance().getReference("delivery").child(kitchenModel.getTableNo()).child("items");
                          dbref.child(kitchenModel.getOrderID()).child("status").setValue("Preparing");
                          break;
                      case "Preparing":
-                         dbref = FirebaseDatabase.getInstance().getReference("Orders");
+                         dbref = FirebaseDatabase.getInstance().getReference("Orders").child("items");
                          dbref.child(kitchenModel.getOrderID()).child("status").setValue("Prepared");
                          break;
                  }
