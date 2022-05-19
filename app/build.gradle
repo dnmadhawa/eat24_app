@@ -41,6 +41,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.2'
     implementation 'androidx.navigation:navigation-ui:2.4.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+<<<<<<< HEAD
     implementation 'com.google.firebase:firebase-database:20.0.5'
 
     implementation 'com.firebaseui:firebase-ui-database:8.0.1'
@@ -49,6 +50,11 @@ dependencies {
     implementation 'com.orhanobut:dialogplus:1.11@aar'
 
     testImplementation 'junit:junit:'
+=======
+    implementation 'com.google.firebase:firebase-database:19.2.1'
+    implementation 'com.firebaseui:firebase-ui-database:8.0.1'
+    testImplementation 'junit:junit:4.13.2'
+>>>>>>> IT20647278
     implementation "androidx.fragment:fragment:1.4.1"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

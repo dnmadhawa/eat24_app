@@ -13,7 +13,17 @@
 
 
         <activity
+<<<<<<< HEAD
             android:name=".AddFoodActivity"
+=======
+            android:name=".SingleBill"
+            android:exported="false" />
+        <activity
+            android:name=".SelectmenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+>>>>>>> IT20647278
             android:exported="false" />
         <activity
             android:name=".foodActivity"
